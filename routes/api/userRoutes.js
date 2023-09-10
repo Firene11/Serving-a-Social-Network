@@ -8,7 +8,7 @@ const {
   deleteUser,
   addFriend,
   removeFriend,
-} = require('../../controllers/userControllers');
+} = require('../../controllers/userController');
 
 router.get('/', getAllUsers); // GET all users
 router.get('/:id', getSingleUser); // GET a single user by its _id and populated thought and friend data
