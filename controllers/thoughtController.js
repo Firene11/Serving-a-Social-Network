@@ -62,5 +62,20 @@ module.exports = {
           res.status(500).json(err);
         }
       },
+      async createReaction(req, res) {
+        try {
+          const deepThought = await Thought.findOneAndUpdate(
+            { _id: req.params.thoughtId },
+            { $push: { reactions: req.body } },
+            { new: true }
+          );
+      
+          !thoughtData
+            ? res.status(404).json({ message: 'No thought found!' })
+            : res.json(deepThought);
+        } catch (err) {
+          res.json(500).json(err);
+        }
+      }
 
 };
