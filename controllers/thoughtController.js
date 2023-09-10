@@ -76,6 +76,25 @@ module.exports = {
         } catch (err) {
           res.json(500).json(err);
         }
+      },
+      async deleteReaction(req, res) {
+        try {
+          const deepThought = await Thought.findByIdAndUpdate(
+            req.params.thoughtId,
+            { $pull: { reactions: { _id: req.params.reactionId } } },
+            { new: true }
+          );
+      
+          if (!deepThought) {
+            return res
+              .status(404)
+              .json({ message: 'No thought found with that ID!' });
+          }
+      
+          res.json(deepThought);
+        } catch (err) {
+          console.error(err);
+          res.status(500).json({ message: 'error' });
+        }
       }
-
 };
