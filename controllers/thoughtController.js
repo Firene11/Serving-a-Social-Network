@@ -16,8 +16,23 @@ module.exports = {
         } catch (err) {
           res.status(500).json(err);
         }
+      },
+      async createThought(req, res) {
+        try {
+          const { thoughtText, username, userId } = req.body;
+      
+          const newThought = await Thought.create({ thoughtText, username, userId });
+          await User.findByIdAndUpdate(
+            userId,
+            { $push: { thoughts: newThought._id } },
+            { new: true }
+          );
+          res.status(201).json({ message: 'New thought created!', newThought });
+        } catch (err) {
+          res.status(500).json(err);
+        }
       }
 
 
 };
-  
+   
