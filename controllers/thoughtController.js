@@ -49,10 +49,18 @@ module.exports = {
         } catch (err) {
           res.status(500).json(err);
         }
-      }
+      },
+      async deleteThought(req, res) {
+        try {
+          const deletedThought = await Thought.findByIdAndDelete(req.params.id);
+          const message = deletedThought
+            ? { message: 'thought deleted', deletedThought }
+            : { message: 'thought not found' };
+      
+          res.status(deletedThought ? 200 : 404).json(message);
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      },
 
 };
-   
-
-  
-  
