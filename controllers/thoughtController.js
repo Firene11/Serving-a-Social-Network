@@ -31,8 +31,28 @@ module.exports = {
         } catch (err) {
           res.status(500).json(err);
         }
+      },
+      async updateThought(req, res) {
+        try {
+          const { thoughtText, username, userId } = req.body;
+      
+          const updatedThought = await Thought.findByIdAndUpdate(
+            req.params.id,
+            { thoughtText, username, userId },
+            { new: true }
+          );
+      
+          const message = updatedThought
+            ? { message: 'thought updated', updatedThought }
+            : { message: 'thought not found' };
+          res.status(updatedThought ? 200 : 404).json(message);
+        } catch (err) {
+          res.status(500).json(err);
+        }
       }
-
 
 };
    
+
+  
+  
