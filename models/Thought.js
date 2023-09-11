@@ -1,5 +1,32 @@
 const { Schema, model } = require('mongoose');
 
+const reactionSchema = new Schema(
+    {
+// reactionId - Use Mongoose's ObjectId data type, Default value is set to a new ObjectId
+  reactionId: {
+    type: Schema.Types.ObjectId,
+    default: () => new Types.ObjectId(),
+  },
+// reactionBody - String, Required, 280 character maximum
+  reactionBody: {
+    type: String,
+    required: true,
+    max: [280, 'Do not exceed 280 characters!'],
+  },
+//username - String, Required
+  username: {
+    type: String,
+    required: true,
+    ref: 'user',
+  },
+// createdAt -Date, Set default value to the current timestamp, Use a getter method to format the timestamp on query
+  createdAt: {
+    get: { type: Date, default: Date.now },
+  },
+});
+
+
+
 const thoughtSchema = new Schema(
     {
 // thoughtText - String, Required, Must be between 1 and 280 characters
@@ -35,37 +62,14 @@ const thoughtSchema = new Schema(
 
 //Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
 thoughtSchema.virtual('reactionCount').get(function () {
-    return this.reactions ? this.reactions.length : 0;
+    return this.reactions.length;
   });
   
   const Thought = model('thought', thoughtSchema);
 
 
 
-const reactionSchema = new Schema(
-    {
-// reactionId - Use Mongoose's ObjectId data type, Default value is set to a new ObjectId
-  reactionId: {
-    type: Schema.Types.ObjectId,
-    default: () => new Types.ObjectId(),
-  },
-// reactionBody - String, Required, 280 character maximum
-  reactionBody: {
-    type: String,
-    required: true,
-    max: [280, 'Do not exceed 280 characters!'],
-  },
-//username - String, Required
-  username: {
-    type: String,
-    required: true,
-    ref: 'user',
-  },
-// createdAt -Date, Set default value to the current timestamp, Use a getter method to format the timestamp on query
-  createdAt: {
-    get: { type: Date, default: Date.now },
-  },
-});
+
 
 
 module.exports = Thought;
