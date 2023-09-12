@@ -13,7 +13,8 @@ const {
 router.route('/').get(getAllUsers).post(createUser);
 router.route('/:id').get(getSingleUser);
 router.route(':id').put(updateUser).delete(deleteUser);
-router.route('/:userId/friends/:friendId').post(addFriend).delete(removeFriend);
+router.route('/:userId/friends/:friendId').post(addFriend);
+router.route('/:userId/friends/:friendId').delete(removeFriend);
 
 //router.get('/', getAllUsers); // GET all users
 //router.get('/:id', getSingleUser); // GET a single user by its _id and populated thought and friend data

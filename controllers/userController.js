@@ -1,4 +1,4 @@
-const { User, Thought } = require('../models');
+const User = require('../models/User');
 
 module.exports = {
     async getSingleUser(req, res) {
@@ -9,6 +9,16 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+
+    async getAllUsers(req, res) {
+        try {
+            const getUsers = await User.find();
+            res.json(getUsers);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+
     async createUser(req, res) {
         try {
             const findUser = await User.findOne({ username: req.body.username });
