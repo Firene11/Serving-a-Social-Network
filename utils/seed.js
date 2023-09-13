@@ -4,24 +4,21 @@ const { getRandomUser, getRandomThought } = require('./data');
 
 connection.on('error', (err) => err);
 
-// Start the seeding runtime timer
-console.time('seeding');
-
 connection.once('open', async () => {
     console.log('connected');
     // Delete the collections if they exist
-    let userCheck = await connection.db.listCollections({ name: 'user' }).toArray();
+    let userCheck = await connection.db.listCollections({ name: 'users' }).toArray();
     if (userCheck.length) {
-      await connection.dropCollection('user');
+      await connection.dropCollection('users');
     }
   
-    let thoughtCheck = await connection.db.listCollections({ name: 'thought' }).toArray();
+    let thoughtCheck = await connection.db.listCollections({ name: 'thoughts' }).toArray();
     if (thoughtCheck.length) {
-      await connection.dropCollection('thought');
+      await connection.dropCollection('thoughts');
     }
   
-    const users = [];
-    const thoughts = getRandomThoughts(10);
+    const users = getRandomUser;
+    const thoughts = getRandomThought;
 
   
     await User.collection.insertMany(users);
