@@ -78,7 +78,7 @@ const someThoughts = [
       },
 ];
 
-const user = [];
+const users = [];
 
 // Get a random user given an array
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
