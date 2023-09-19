@@ -1,8 +1,28 @@
 const connection = require('../config/connection');
 const { User, Thought } = require('../models');
-const { getRandomUser, getRandomThought } = require('./data');
+const { someUsers, someThoughts } = require('./data');
+const mongoose = require('mongoose');
 
 connection.on('error', (err) => err);
+
+const generateUserData = async (userData, thoughtData) => {
+  const thoughtId = new mongoose.Types.ObjectId();
+  console.log(thoughtId);
+  await Thought.collection.insertOne(
+    {
+      _id: thoughtId,
+      thoughtText: thoughtData.thoughtText,
+      username: thoughtData.username,
+    }
+    );
+  await User.collection.insertOne(
+    {
+      username: userData.username,
+      email: userData.email,
+      thoughts: [thoughtId]
+    }
+  )
+}
 
 connection.once('open', async () => {
     console.log('connected');
@@ -17,16 +37,20 @@ connection.once('open', async () => {
       await connection.dropCollection('thoughts');
     }
   
-    const users = getRandomUser;
-    const thoughts = getRandomThought;
+    // const users = getRandomUser;
+    // const thoughts = getRandomThought;
 
   
-    await User.collection.insertMany(users);
-    await Thought.collection.insertMany(thoughts);
+    // const thoughts = await Thought.collection.insertMany(someThoughts);
+    // const users = await User.collection.insertMany(someUsers);
+
+    for (let index = 0; index < someUsers.length; index++) {
+      await generateUserData(someUsers[index], someThoughts[index]);
+    }
   
     // loop through the saved users, for each user we need to generate a user thought and insert the thoughts
-    console.table(users);
-    console.table(thoughts);
+    // console.log(users);
+    // console.log(thoughts);
     console.info('Seeding complete!');
     process.exit(0);
   });

@@ -2,79 +2,79 @@
 
 const someUsers = [
     {
-        "username": "lernantino",
-        "email": "lernantino@gmail.com"
+        username: "lernantino",
+        email: "lernantino@gmail.com"
     },
     {
-        "username": "daniel",
-        "email": "daniel@gmail.com"
+        username: "daniel",
+        email: "daniel@gmail.com"
     },
     {
-        "username": "terence",
-        "email": "terence@outlook.com"
+        username: "terence",
+        email: "terence@outlook.com"
     },
     {
-        "username": "sarah",
-        "email": "sarah@hotmail.com"
+        username: "sarah",
+        email: "sarah@hotmail.com"
     },
     {
-        "username": "jacob",
-        "email": "jacob@gmail.com"
+        username: "jacob",
+        email: "jacob@gmail.com"
     },
     {
-        "username": "aviad",
-        "email": "aviad@netwoking.com"
+        username: "aviad",
+        email: "aviad@netwoking.com"
     },
     {
-        "username": "ben",
-        "email": "benben@gmail.com"
+        username: "ben",
+        email: "benben@gmail.com"
     },
     {
-        "username": "chris",
-        "email": "christopher@usermail.com"
+        username: "chris",
+        email: "christopher@usermail.com"
     },
     {
-        "username": "midge",
-        "email": "midgiecat@catsnow.com"
+        username: "midge",
+        email: "midgiecat@catsnow.com"
     },
   ];
 
 const someThoughts = [
     {
-        "thoughtText": "Here's a cool thought...",
-        "username": "lernantino",
+        thoughtText: "Here's a cool thought...",
+        username: "lernantino"
       },
       {
-        "thoughtText": "When ther's a will, there's a way!",
-        "username": "daniel",
+        thoughtText: "When ther's a will, there's a way!",
+        username: "daniel"
       },
       {
-        "thoughtText": "Is the moon made of cheese?",
-        "username": "terence",
+        thoughtText: "Is the moon made of cheese?",
+        username: "terence",
       },
       {
-        "thoughtText": "I wish summer would never end",
-        "username": "sarah",
+        thoughtText: "I wish summer would never end",
+        username: "sarah",
       },
       {
-        "thoughtText": "I am a pretty smart guy.",
-        "username": "jacob",
+        thoughtText: "I am a pretty smart guy.",
+        username: "jacob",
       },
       {
-        "thoughtText": "What the heck is happening today?",
-        "username": "aviad",
+        thoughtText: "What the heck is happening today?",
+        username: "aviad",
       },
       {
-        "thoughtText": "Cats are hilarious",
-        "username": "ben",
+        thoughtText: "Cats are hilarious",
+        username: "ben",
       },
       {
-        "thoughtText": "I am a man of mystery",
-        "username": "chris",
+        thoughtText: "I am a man of mystery",
+        username: "chris",
       },
       {
-        "thoughtText": "I will master the universe",
-        "username": "midge",
+        thoughtText: "I will master the universe",
+        username: "midge",
       },
 ];
 
@@ -89,16 +89,8 @@ const getRandomUser = () =>
 
   
   // Create the thoughts that will be added to each user
-  const getRandomThought = (int) => {
-    const results = [];
-    for (let i = 0; i < int; i++) {
-      results.push({
-        responseBody: getRandomArrItem(someThoughts),
-        username: getRandomUser()[0],
-      });
-    }
-    return results;
-  };
+  const getRandomThought = () =>
+  `${getRandomArrItem(someThoughts)}`;  
   
 
 
