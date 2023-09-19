@@ -95,5 +95,5 @@ const getRandomUser = () =>
 
 
 // Export the functions for use in seed.js
-module.exports = { getRandomUser, getRandomThought };
+module.exports = { someUsers, someThoughts };
   
