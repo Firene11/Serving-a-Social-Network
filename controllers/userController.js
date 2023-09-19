@@ -25,7 +25,7 @@ module.exports = {
             if (findUser) {
                 return res.status(404).json({ message: 'Username not available' });
             }
-            const newUser = await User.findOne({ username: req.body.username });
+            const newUser = await User.create(req.body);
             res.status(200).json({ message: 'New User created!', user: newUser});
         } catch (err) {
             res.status(500).json(err);

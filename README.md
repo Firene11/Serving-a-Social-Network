@@ -1,21 +1,54 @@
 # Serving-a-Social-Network
 
-AS A social media startup, I WANT an API for my social network that uses a NoSQL database, SO THAT my website can handle large amounts of unstructured data
+## Description
 
-GIVEN a social network API 
+This application is a back end for a a social network API that uses a NoSQL database so that a website can handle large amounts of unstructured data. Users can share their thoughts, react to friends' thoughts, and create a friend list.
 
-WHEN I enter the command to invoke the application
+## Table of Contents
 
-THEN my server is started and the Mongoose models are synced to the MongoDB database
+- [Installation](#installation)
+- [Usage](#usage)
+- [Video](#video)
+- [Screenshots](#Screenshots)
+- [Credits](#credits)
+- [Tests](#tests)
+- [License](#license)
 
-WHEN I open API GET routes in Insomnia for users and thoughts
+## Installation
 
-THEN the data for each of these routes is displayed in a formatted JSON
+Clone the repository: **git clone https://github.com/Firene11/Serving-a-Social-Network.git**
 
-WHEN I test API POST, PUT, and DELETE routes in Insomnia
+## Usage
 
-THEN I am able to successfully create, update, and delete users and thoughts in my database
+From the command line in your terminal run the commmand:
 
-WHEN I test API POST and DELETE routes in Insomnia
+**npm run seed** to seed the database
 
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+A development database is created and is seeded with test data.
+
+From the command line in your terminal run the commmand:
+
+**npm start** to listen to the PORT
+
+The server is started and the Mongoose models are synced to the MongoDB database.
+
+When you open API GET routes in Insomnia for users and thoughts, the data for each of these routes is displayed in a formatted JSON.
+
+When you test API POST, PUT, and DELETE routes in Insomnia, you are able to successfully create, update, and delete users and thoughts in the MongoDB database.
+
+When you test API POST and DELETE routes in Insomnia, you are able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list.
+
+**https://insomnia.rest/**
+
+## Video
+
+**Watch this VIDEO to see how the app runs!**
+
+https://drive.google.com/file/d/1WfkFoGu-8o8E5m4yCyRcSVpQEscQN3mi/view
+
+## Screenshots
+
+![Application](Images/get.jpg)
+![Application](Images/post.jpg)
+![Application](Images/put.jpg)
+![Application](Images/delete.jpg)
