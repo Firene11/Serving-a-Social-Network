@@ -71,13 +71,15 @@ module.exports = {
             { new: true }
           );
       
-          !thoughtData
+          !deepThought
             ? res.status(404).json({ message: 'No thought found!' })
             : res.json(deepThought);
         } catch (err) {
           res.json(500).json(err);
         }
       },
+
+
       async deleteReaction(req, res) {
         try {
           const deepThought = await Thought.findByIdAndUpdate(
