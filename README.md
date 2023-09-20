@@ -42,7 +42,7 @@ When you test API POST and DELETE routes in Insomnia, you are able to successful
 
 **Watch this VIDEO to see how the app runs!**
 
-https://drive.google.com......
+https://drive.google.com/file/d/1C9XLCDw9Y_NSt3-fLnCL0FJ6Bo3eutD2/view
 
 ## Screenshots
 
